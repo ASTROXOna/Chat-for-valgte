@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #message-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        #message-container p {
+            margin: 5px 0;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="message-container">
+        <h2>Chat Room</h2>
+        <div id="messages"></div>
+        <form id="message-form">
+            <input type="text" id="message-input" placeholder="Type your message here..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('message-form');
+            const messageInput = document.getElementById('message-input');
+            const messagesContainer = document.getElementById('messages');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const message = messageInput.value.trim();
+                if (message !== '') {
+                    appendMessage(message);
+                    messageInput.value = '';
+                }
+            });
+
+            function appendMessage(message) {
+                const p = document.createElement('p');
+                p.textContent = message;
+                messagesContainer.appendChild(p);
+            }
+        });
+    </script>
+</body>
+</html>
